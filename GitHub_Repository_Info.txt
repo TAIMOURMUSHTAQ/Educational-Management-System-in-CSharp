@@ -1,0 +1,58 @@
+================================================================================
+                    GITHUB REPOSITORY INFORMATION
+================================================================================
+
+REPOSITORY NAME:
+----------------
+Educational-Management-System
+
+REPOSITORY DESCRIPTION:
+-----------------------
+A comprehensive Educational Management System built with C# Windows Forms and SQL Server. Features include Admin Login, Student Management (CRUD), Teacher Management, Attendance Tracking, and Timetable Management with a modern, attractive UI design.
+
+SHORT DESCRIPTION (For GitHub):
+-------------------------------
+🎓 Educational Management System - C# WinForms + SQL Server | Admin Panel, Student/Teacher CRUD, Attendance & Timetable Management
+
+TOPICS/TAGS (Add these to your repository):
+-------------------------------------------
+csharp, winforms, sql-server, ado-net, educational-management, student-management, 
+teacher-management, attendance-system, timetable-management, desktop-application,
+windows-forms, dotnet-framework, crud-operations, database-application
+
+================================================================================
+                         HOW TO PUSH TO GITHUB
+================================================================================
+
+STEP 1: Create a new repository on GitHub
+------------------------------------------
+1. Go to https://github.com/new
+2. Repository name: Educational-Management-System
+3. Description: (paste the short description above)
+4. Choose: Public or Private
+5. DO NOT initialize with README (we have our own)
+6. Click "Create repository"
+
+STEP 2: Push your code using Git commands
+------------------------------------------
+Open Command Prompt or PowerShell in the project folder and run:
+
+cd "c:\Users\Win\Desktop\Student Management System\EducationalManagementSystem"
+
+git init
+git add .
+git commit -m "Initial commit: Educational Management System with C# WinForms"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/Educational-Management-System.git
+git push -u origin main
+
+Replace YOUR_USERNAME with your actual GitHub username.
+
+STEP 3: After pushing, add topics
+----------------------------------
+1. Go to your repository on GitHub
+2. Click the gear icon next to "About"
+3. Add the topics listed above
+4. Save
+
+================================================================================

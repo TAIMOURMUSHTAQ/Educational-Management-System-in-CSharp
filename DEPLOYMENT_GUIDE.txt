@@ -1,0 +1,155 @@
+================================================================================
+            DEPLOYMENT GUIDE - EDUCATIONAL MANAGEMENT SYSTEM
+================================================================================
+                    HOW TO CREATE A DEPLOYABLE PACKAGE
+================================================================================
+
+This guide explains how to create a deployable/portable version of the
+Educational Management System that can run on any Windows computer.
+
+================================================================================
+                        METHOD 1: VISUAL STUDIO PUBLISH
+                         (Recommended - ClickOnce/MSIX)
+================================================================================
+
+STEP 1: Open Solution in Visual Studio
+---------------------------------------
+1. Double-click "EducationalManagementSystem.sln"
+2. Wait for Visual Studio to load completely
+
+STEP 2: Set Release Mode
+------------------------
+1. In the toolbar, change "Debug" to "Release"
+2. Platform should be "Any CPU"
+
+STEP 3: Publish the Application
+-------------------------------
+1. Right-click on the project in Solution Explorer
+2. Select "Publish..."
+3. Choose "Folder" as the target
+4. Click "Next"
+5. Choose location: "bin\Publish\" or any folder
+6. Click "Finish"
+7. Click "Publish"
+
+The published files will be in the selected folder.
+
+================================================================================
+                     METHOD 2: MANUAL RELEASE BUILD
+                        (Simple & Portable)
+================================================================================
+
+STEP 1: Build in Release Mode
+-----------------------------
+1. Open solution in Visual Studio
+2. Select "Release" from dropdown (not Debug)
+3. Build > Build Solution (Ctrl+Shift+B)
+
+STEP 2: Find Output Files
+-------------------------
+Navigate to: bin\Release\
+
+You'll find:
+- EducationalManagementSystem.exe    (Main application)
+- EducationalManagementSystem.exe.config (Configuration)
+- (Other DLL files if any)
+
+STEP 3: Create Deployment Package
+---------------------------------
+1. Create a new folder called "EducationalManagementSystem_v1.0"
+2. Copy ALL files from bin\Release\ to this folder
+3. Copy DatabaseSetup.sql to this folder
+4. Copy the DEPLOYMENT_README.txt to this folder
+5. Zip the folder
+
+================================================================================
+                     METHOD 3: USING BUILD SCRIPT
+                     (Run BuildRelease.bat)
+================================================================================
+
+1. Open Command Prompt as Administrator
+2. Navigate to project folder
+3. Run: BuildRelease.bat
+4. Find output in "Deployment" folder
+
+================================================================================
+                    FILES TO INCLUDE IN DEPLOYMENT
+================================================================================
+
+Required Files:
+--------------
+✓ EducationalManagementSystem.exe
+✓ EducationalManagementSystem.exe.config
+✓ DatabaseSetup.sql
+✓ DEPLOYMENT_README.txt (for end users)
+
+Optional Files:
+--------------
+○ README.md (documentation)
+○ Any additional DLLs from bin\Release
+
+================================================================================
+                    TARGET SYSTEM REQUIREMENTS
+================================================================================
+
+The target computer must have:
+
+1. Windows 10 or Windows 11
+2. .NET Framework 4.7.2 or higher
+   - Download: https://dotnet.microsoft.com/download/dotnet-framework/net472
+   
+3. SQL Server (any edition)
+   - SQL Server Express (free): https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+   - OR SQL Server LocalDB
+   - OR Full SQL Server
+
+================================================================================
+                    INSTALLATION ON TARGET SYSTEM
+================================================================================
+
+STEP 1: Install Prerequisites
+-----------------------------
+1. Install .NET Framework 4.7.2 if not present
+2. Install SQL Server Express
+
+STEP 2: Setup Database
+----------------------
+1. Open SQL Server Management Studio
+2. Connect to local SQL Server instance
+3. Open and execute DatabaseSetup.sql
+4. Verify database "EducationalManagementDB" is created
+
+STEP 3: Configure Connection (if needed)
+-----------------------------------------
+If SQL Server instance name is different:
+1. Open EducationalManagementSystem.exe.config in Notepad
+2. Find the connection string
+3. Change ".\SQLEXPRESS" to your server name
+4. Save the file
+
+STEP 4: Run Application
+-----------------------
+Double-click EducationalManagementSystem.exe
+
+Default Login: admin / admin123
+
+================================================================================
+                         TROUBLESHOOTING
+================================================================================
+
+Error: "Could not connect to database"
+Solution: 
+- Verify SQL Server is running
+- Check connection string in .exe.config
+- Run DatabaseSetup.sql again
+
+Error: ".NET Framework not found"
+Solution:
+- Download and install .NET Framework 4.7.2 from Microsoft
+
+Error: "SQL Server not found"
+Solution:
+- Install SQL Server Express
+- Make sure SQL Server service is running
+
+================================================================================
